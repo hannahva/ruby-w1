@@ -13,6 +13,7 @@
 def to_roman(number)
   result = ''
   @roman_nums.each do |value, letter|
+    # print letter amount of times its value divides into the current number
     result << letter * (number / value)
     # number assigned to remainder to get numerals from large to small
     number = number % value
