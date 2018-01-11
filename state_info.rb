@@ -55,7 +55,7 @@ def calculate_tax(state_code = nil, dollars = nil)
       tax_amount = dollars / (tax_rate + 1)
       tax_amount.round(2)
     else
-      "skipping to here. no state with that code in here"
+      "no state with that code in here"
     end
   elsif state_code.nil? and dollars.nil?
     "please enter a state code and dollar amount"
@@ -64,7 +64,7 @@ def calculate_tax(state_code = nil, dollars = nil)
   end
 end
 
-puts calculate_tax('FL', 347)
+puts calculate_tax('PC', 347)
 
 def find_state_for_city(city_name = nil)
   if city_name
