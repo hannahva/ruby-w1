@@ -59,28 +59,40 @@ def calculate_tax(state_code = nil, dollars = nil)
     end
   elsif state_code.nil? and dollars.nil?
     "please enter a state code and dollar amount"
+  # redundant? first argument always assumed to be state_code
   elsif state_code and dollars.nil?
     "please enter a state code and the amount you wish to calculate"
   end
 end
 
-puts calculate_tax('PC', 347)
+puts calculate_tax('NJ', 347)
 
 def find_state_for_city(city_name = nil)
   if city_name
+    has_city = ''
+    state = ''
     @cities.each do |key, values|
       values.each do |value|
-        if value == city_name
-          print "#{city_name} is in #{@states[key]}"
+        if city_name == value
+          has_city = value
+          state = @states[key]
         end
       end
+    end
+    if has_city == ''
+      print "#{city_name} is not in my list"
+    else
+      print "#{has_city} is in #{state}"
     end
   elsif city_name.nil?
     "no city entered"
   end
 end
 
-puts find_state_for_city("Flint")
+puts find_state_for_city('Flint')
+puts find_state_for_city('Texas')
+puts find_state_for_city()
+puts find_state_for_city('Seattle')
 
 
 
