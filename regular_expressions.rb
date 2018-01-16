@@ -39,6 +39,7 @@ end
 
 puts "grab_all_sins returns all SINs if the string has any SINs"
 puts grab_all_sins("234-604-142, 350-802-074, 013-630-876") == ["234-604-142", "350-802-074", "013-630-876"]
+puts grab_all_sins("123-456-789") == ["123-456-789"]
 
 puts "grab_all_sins returns an empty Array if it doesn't have any SINs"
 puts grab_all_sins("please confirm your identity: XXX-XXX-142") == []
@@ -51,6 +52,7 @@ end
 
 puts "hide_all_sins obfuscates any SINs in the string"
 puts hide_all_sins("234-601-142, 350-801-074, 013-601-876") == "XXX-XXX-142, XXX-XXX-074, XXX-XXX-876"
+puts hide_all_sins("123-456-789") == "XXX-XXX-789"
 
 puts "hide_all_sins does not alter a string without SINs in it"
 string = "please confirm your identity: XXX-XXX-142"
