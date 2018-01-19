@@ -21,13 +21,19 @@ def find
 end
 
 def qualified_candidates(candidates)
-  candidates.select { |candidate|
-    experienced?(candidate) &&
-    github_points?(candidate) &&
-    ruby_python?(candidate) &&
-    applied_by?(candidate) &&
-    eighteen?(candidate)
-  }
+  puts "enter 'all' to see a list of all candidates, or hit the enter key to see only qualified candidates"
+  arg_array = gets.chomp
+  if arg_array.empty?
+    candidates.select { |candidate|
+      experienced?(candidate) &&
+      github_points?(candidate) &&
+      ruby_python?(candidate) &&
+      applied_by?(candidate) &&
+      eighteen?(candidate)
+    }
+  elsif arg_array.include? "all"
+    return candidates
+  end
 end
 
 def ordered_by_qualifications(candidates)
