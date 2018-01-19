@@ -8,7 +8,10 @@ require './filters'
 ## Your test code can go here
 # puts experienced?(@candidates[0])
 
-puts find
+while true do
+  puts find
+  pp qualified_candidates(@candidates)
+end
 
 # puts github_points?(@candidates[0])
 
@@ -20,5 +23,4 @@ puts find
 
 # binding.pry
 
-pp qualified_candidates(@candidates)
 # pp ordered_by_qualifications(@candidates)

@@ -2,28 +2,29 @@
 # This way, we keep these methods separated from other potential parts of the program
 require './candidates'
 
-# puts "enter 'find (insert id)' to find specific candidate"
-# puts "enter 'all' to see list of all candidates"
-# puts "enter 'qualified' to see list of qualified candidates"
-# puts "enter 'quit' to exit the program"
-
-
 def find
+  puts "enter 'quit' at any time to exit the program"
   puts "enter 'find (insert id)' to find specific candidate"
   arg_array = gets.chomp.split(' ')
   id = arg_array[1].to_i
-  @candidates.each do |candidate|
-    if candidate[:id] == id
-      return candidate
+  if arg_array.include? 'quit'
+    abort ('program ended')
+  else
+    @candidates.each do |candidate|
+      if candidate[:id] == id
+        return candidate
+      end
     end
+    "no candidate with that id found"
   end
-  "no candidate with that id found"
 end
 
 def qualified_candidates(candidates)
   puts "enter 'all' to see a list of all candidates, or 'qualified' to see only a selection"
   arg_array = gets.chomp
-  if arg_array.include? "qualified"
+  if arg_array.include? 'quit'
+    abort ('program ended')
+  elsif arg_array.include? 'qualified'
     candidates.select { |candidate|
       experienced?(candidate) &&
       github_points?(candidate) &&
@@ -31,10 +32,11 @@ def qualified_candidates(candidates)
       applied_by?(candidate) &&
       eighteen?(candidate)
     }
-  elsif arg_array.include? "all"
+  elsif arg_array.include? 'all'
     return candidates
   end
 end
+
 
 def ordered_by_qualifications(candidates)
   # - makes it descending rather than ascending. using .reverse method apparently makes it have to traverse the collection again instead of immediate negation
@@ -80,7 +82,6 @@ def eighteen?(candidate)
     false
   end
 end
-
 
 
 
