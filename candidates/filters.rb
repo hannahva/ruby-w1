@@ -2,13 +2,22 @@
 # This way, we keep these methods separated from other potential parts of the program
 require './candidates'
 
-def find(id)
+# puts "enter 'find (insert id)' to find specific candidate"
+# puts "enter 'all' to see list of all candidates"
+# puts "enter 'qualified' to see list of qualified candidates"
+# puts "enter 'quit' to exit the program"
+
+
+def find
+  puts "enter 'find (insert id)' to find specific candidate"
+  arg_array = gets.chomp.split(' ')
+  id = arg_array[1].to_i
   @candidates.each do |candidate|
     if candidate[:id] == id
       return candidate
     end
   end
-  nil
+  "no candidate with that id found"
 end
 
 def qualified_candidates(candidates)
