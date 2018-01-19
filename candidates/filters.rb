@@ -21,9 +21,9 @@ def find
 end
 
 def qualified_candidates(candidates)
-  puts "enter 'all' to see a list of all candidates, or hit the enter key to see only qualified candidates"
+  puts "enter 'all' to see a list of all candidates, or 'qualified' to see only a selection"
   arg_array = gets.chomp
-  if arg_array.empty?
+  if arg_array.include? "qualified"
     candidates.select { |candidate|
       experienced?(candidate) &&
       github_points?(candidate) &&
