@@ -22,12 +22,14 @@ class Questions
   end
 
   def prompt_player_for_answer
+    # question with randomized integers and operator
     @operator_selected = @operator.sample
     puts "what does #{@first_int} #{@operator_selected} #{@second_int} equal?"
     @response = gets.chomp.to_i
   end
 
   def verify_answer
+    # eval() only works on strings
     if @response == eval(@first_int.to_s + @operator_selected.to_s + @second_int.to_s)
       true
     else
@@ -68,7 +70,7 @@ class Game
   end
 
   def replay?
-    puts "would you like to play again?"
+    puts "would you like to play again? yes / no"
     answer = gets.chomp
     if answer.include? "yes"
       @games_played += 1
